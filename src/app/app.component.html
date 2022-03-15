@@ -1,0 +1,157 @@
+<div class="collapse" id="navbarToggleExternalContent">
+  <div class="bg-dark p-4">
+    <h5 class="text-white h4">Seedtag_YVH</h5>
+    <span class="text-muted">Entity Scans and Logs</span>
+  </div>
+</div>
+<nav class="navbar navbar-dark bg-dark">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </div>
+</nav>
+
+<div class="col-12" style="display: flex;">
+  <div class="col-6" style="margin-right: 5px;">
+    <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4" style="margin-top: 20px;">
+      <div class="table scroll iu-specialScroll">
+        <table
+          class="table table-bordered"
+          id="dataTable"
+          width="80%"
+          cellspacing="0"
+        >
+          <thead>
+            <tr>   
+              <th scope="col-1"></th> 
+              <th>
+                {{ "Id" }}
+              </th>
+    
+              <th>
+                {{ "Created" }}
+              </th>
+    
+              <th>
+                {{ "Protocols send"}}
+              </th>
+    
+              <th>
+                {{ "Scans send"}}
+              </th>
+            </tr>
+          </thead>
+    
+          <tbody>
+            <tr *ngFor="let item of listScans; let i = index">
+            
+              <th scope="col-2" class="pl-3">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                  <label class="form-check-label" for="flexCheckDefault">
+                  </label>
+                </div>
+                <!--mat-checkbox
+                  [disabled]="userId === item.id"
+                  [checked]="checkboxAll[i]"
+                  (change)="checkedOne(i)"
+                >
+                </mat-checkbox-->
+              </th>
+              <td>
+                <span>  
+                {{ item._id }}               
+                </span>
+              </td>
+    
+              <td>{{ item.createdAt }}</td>
+             
+              <td class="email">
+                <span> {{ item.protocols }}</span>
+              </td>
+              
+              <td>{{ item.scan }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-6">
+    <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4" style="margin-top: 20px;">
+      <div class="table scroll iu-specialScroll">
+        <table
+          class="table table-bordered"
+          id="dataTable"
+          width="100%"
+          cellspacing="0"
+        >
+          <thead>
+            <tr>    
+              <th scope="col-1"></th>
+              <th style="width: 25px;">
+                {{ "Id" }}
+              </th>
+    
+              <th>
+                {{ "Created" }}
+              </th>
+    
+              <th>
+                {{ "Operations"}}
+              </th>
+    
+              <th>
+                {{ "Scan Id"}}
+              </th>
+            </tr>
+          </thead>
+    
+          <tbody>
+            <tr *ngFor="let item of listLogs; let i = index">
+            
+              <th scope="col-2" class="pl-3">
+                <input class="form-check-input" type="checkbox" value="item.checked" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                </label>
+                <!--mat-checkbox
+                  [disabled]="userId === item.id"
+                  [checked]="checkboxAll[i]"
+                  (change)="checkedOne(i)"
+                >
+                </mat-checkbox-->
+              </th>
+
+              <td>
+                <span>  
+                {{ item._id }}               
+                </span>
+              </td>
+    
+              <td>{{ item.createdAt }}</td>
+             
+              <td class="email">
+                <span> {{ item.Operation }}</span>
+              </td>
+              
+              <td>{{ item.idScan }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="col-12" style="display: flex; text-align: center;">
+  <div class="col-6" style="margin-right: 5px;">
+    <button type="button" class="btn btn-dark" (click)="deleteScans()">Delete all Scans</button>
+  </div>
+
+  <div class="col-6">
+    <button type="button" class="btn btn-dark" (click)="deleteLogs()">Delete all Logs</button>
+  </div>
+</div>
+
